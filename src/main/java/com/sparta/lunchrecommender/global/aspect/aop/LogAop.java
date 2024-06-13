@@ -32,7 +32,10 @@ public class LogAop {
     @Pointcut("execution(* com.sparta.lunchrecommender.domain.user.controller.*.*(..))")
     private void user(){}
 
-    @Before("auth() || comment() || follow() || like() || post() || user()")
+    @Pointcut("execution(* com.sparta.lunchrecommender.domain..*Controller.*(..))")
+    private void allController(){}
+
+    @Before("allController()")
     public void beforeLogging(){
         //요청한 모든 속성 가져오기
         // HTTP 요청에 대한 메서드 사용하기 위해 RequestAttributes 객체로 캐스팅

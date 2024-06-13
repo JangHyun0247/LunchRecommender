@@ -38,10 +38,7 @@ class PostRequestDtoTest {
             Set<ConstraintViolation<PostUpdateRequestDto>> violations = validator.validate(postUpdateRequestDto);
 
             //then
-            for (ConstraintViolation<PostUpdateRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("수정 할 내용을 입력해주세요!", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"필수 입력 값입니다. 유효성 검사에 실패했습니다.");
         }
 
         @Test
@@ -82,10 +79,7 @@ class PostRequestDtoTest {
             Set<ConstraintViolation<PostCreateRequestDto>> violations = validator.validate(postCreateRequestDto);
 
             //then
-            for (ConstraintViolation<PostCreateRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("작성할 내용을 입력해주세요!", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"필수 입력 값입니다. 유효성 검사에 실패했습니다.");
         }
 
         @Test

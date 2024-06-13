@@ -42,11 +42,9 @@ class UserRequestDtoTest {
             Set<ConstraintViolation<UserRequestDto>> violations = validator.validate(userRequestDto);
 
             //then
-            for (ConstraintViolation<UserRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("아이디는 최소 10자 이상 최대 20자 이하입니다.", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"아이디 길이를 확인해보세요. 유효성 검사에 실패했습니다.");
         }
+
 
         @Test
         @DisplayName("아이디 길이 실패 테스트")
@@ -99,10 +97,7 @@ class UserRequestDtoTest {
             Set<ConstraintViolation<UserRequestDto>> violations = validator.validate(userRequestDto);
 
             //then
-            for (ConstraintViolation<UserRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("비밀번호는 대문자, 소문자, 숫자, 특수 기호를 하나씩 포함해야 하며, 최소 10자 이상이어야 합니다.", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"비밀번호 형식을 확인해보세요. 유효성 검사에 실패했습니다.");
         }
 
         @Test
@@ -155,10 +150,7 @@ class UserRequestDtoTest {
             Set<ConstraintViolation<UserRequestDto>> violations = validator.validate(userRequestDto);
 
             //then
-            for (ConstraintViolation<UserRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("필수 입력 값입니다.", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"필수 입력 값입니다. 유효성 검사에 실패했습니다.");
         }
 
         @Test
@@ -211,10 +203,7 @@ class UserRequestDtoTest {
             Set<ConstraintViolation<UserRequestDto>> violations = validator.validate(userRequestDto);
 
             //then
-            for (ConstraintViolation<UserRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("필수 입력 값입니다.", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"필수 입력 값입니다. 유효성 검사에 실패했습니다.");
         }
 
         @Test
@@ -267,10 +256,7 @@ class UserRequestDtoTest {
             Set<ConstraintViolation<UserRequestDto>> violations = validator.validate(userRequestDto);
 
             //then
-            for (ConstraintViolation<UserRequestDto> violation : violations) {
-                //검사에서 발생한 모든 에러 출력
-                Assertions.assertEquals("유효한 이메일 형식이어야 합니다.", violation.getMessage());
-            }
+            Assertions.assertTrue(violations.isEmpty(),"이메일 형식을 확인해주세요. 유효성 검사에 실패했습니다.");
         }
 
         @Test
