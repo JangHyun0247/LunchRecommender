@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 @DisplayName("user 메서드 테스트")
 class UserTest {
 
-private final User user = new User(
+private final User userProfile = new User(
             "wkdgus1111",
             "Wkdgus1004ok!",
             "주장현",
@@ -26,14 +26,14 @@ private final User user = new User(
     @DisplayName("프로필 수정 테스트")
     void update() {
         //given
-        ProfileRequestDto profileRequestDto = new ProfileRequestDto("이진욱","진욱님","한 줄 소개 프로필","wkdgus1111@naver.com","Wkdgus1004ok!");
+        ProfileRequestDto updateProfile = new ProfileRequestDto("이진욱","진욱님","한 줄 소개 프로필","wkdgus1111@naver.com","Wkdgus1004ok!");
 
         //when
-        user.update(profileRequestDto);
+        userProfile.update(updateProfile);
 
         //then
-        assertNotEquals("주장현닉네임",user.getNickname());
-        assertEquals("wkdgus1111@naver.com",user.getEmail());
+        assertNotEquals("주장현닉네임",userProfile.getNickname());
+        assertEquals("wkdgus1111@naver.com",userProfile.getEmail());
     }
 
     @Test
@@ -43,11 +43,11 @@ private final User user = new User(
         UserStatus userStatus = UserStatus.DELETED;
 
         //when
-        user.setStatus(userStatus);
+        userProfile.setStatus(userStatus);
 
         //then
-        assertNotEquals("정상",user.getStatus());
-        assertEquals("탈퇴",user.getStatus());
+        assertNotEquals("정상",userProfile.getStatus());
+        assertEquals("탈퇴",userProfile.getStatus());
     }
 
 }
