@@ -26,6 +26,9 @@ spring:
           starttls:
             enable: true  # STARTTLS 사용 여부 (TLS 암호화)
 
+#server:
+#  port: 8081
+
 server:
   port: 443
   ssl:
