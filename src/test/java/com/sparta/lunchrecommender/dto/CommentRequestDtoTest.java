@@ -37,7 +37,6 @@ class CommentRequestDtoTest {
             Set<ConstraintViolation<CommentRequestDto>> violations = validator.validate(commentRequestDto);
 
             //then
-            //then
             Assertions.assertTrue(violations.isEmpty(),"필수 입력 값입니다. 유효성 검사에 실패했습니다.");
         }
 

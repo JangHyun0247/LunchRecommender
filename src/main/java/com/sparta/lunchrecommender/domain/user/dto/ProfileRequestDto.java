@@ -3,10 +3,12 @@ package com.sparta.lunchrecommender.domain.user.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@AllArgsConstructor
 public class ProfileRequestDto {
 
     @NotNull(message = "이름은 필수입니다.")

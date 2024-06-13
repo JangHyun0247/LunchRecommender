@@ -33,7 +33,6 @@ public class Post extends Timestamped {
     private User user;
 
 
-
     public Post(PostCreateRequestDto requestDto) {
         this.content = requestDto.getContent();
         this.likeCount = 0L;
