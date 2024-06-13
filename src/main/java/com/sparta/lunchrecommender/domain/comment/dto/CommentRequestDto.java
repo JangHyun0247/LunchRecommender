@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class CommentRequestDto {
-    @NotBlank
+    @NotBlank(message = "댓글 내용을 입력해주세요!")
     private String content;
 
     @JsonCreator // 필드가 1개라서 deserialize 에러 발생 -> 해결
