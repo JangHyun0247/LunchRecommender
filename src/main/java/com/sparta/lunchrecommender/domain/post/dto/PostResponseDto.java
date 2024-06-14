@@ -23,6 +23,7 @@ public class PostResponseDto {
         this.content = post.getContent();
         this.created_at = post.getCreatedAt();
         this.modified_at = post.getModifiedAt();
+
     }
 
     }

@@ -1,9 +1,10 @@
 package com.sparta.lunchrecommender.global.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Component;
 
-@Component
+@Configuration
 @EnableJpaAuditing
 public class JpaConfig {
 }

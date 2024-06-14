@@ -34,6 +34,7 @@ public class PostController {
             @RequestParam(value = "startDate", required = false) String startDateStr,
             @RequestParam(value = "endDate", required = false) String endDateStr
     ) {
+        System.out.println("실행");
         List<String> sortable = Arrays.asList("createdAt", "likeCount"); // 생성일자와 좋아요순으로만 조회 가능
         if (!sortable.contains(sortBy)){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
@@ -65,6 +66,7 @@ public class PostController {
         }
 
         Page<PostResponseDto> posts = postService.getPosts(page, sortBy, startDate, endDate);
+
         if (posts.isEmpty()) {
             return ResponseEntity.status(HttpStatus.OK).body(
                     HttpResponseDto.builder()
