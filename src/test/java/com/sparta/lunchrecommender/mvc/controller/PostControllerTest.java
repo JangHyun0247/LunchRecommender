@@ -11,6 +11,7 @@ import com.sparta.lunchrecommender.domain.user.constant.UserStatus;
 import com.sparta.lunchrecommender.domain.user.entity.User;
 import com.sparta.lunchrecommender.global.config.WebSecurityConfig;
 import com.sparta.lunchrecommender.global.security.UserDetailsImpl;
+import com.sparta.lunchrecommender.mvc.secutity.MockSpringSecurityFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.LinkedMultiValueMap;
@@ -40,6 +40,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(
@@ -68,8 +69,16 @@ class PostControllerTest {
     @MockBean
     PostService postService;
 
-    @Autowired
-    private MockMvc mockMvc;
+    PostCreateRequestDto requestDto = new PostCreateRequestDto("게시물 작성");
+    private final Post post = new Post(requestDto);
+
+    private final User user = new User(
+            "wkdgus1111",
+            "Wkdgus1004ok!",
+            "주장현",
+            "주장현닉네임",
+            "yugi@naver.com",
+            "한줄 소개", UserStatus.ACTIVE);
 
     @BeforeEach
     public void setup() {
@@ -153,7 +162,6 @@ class PostControllerTest {
     }
 
     @Test
-//    @WithMockUser
     @DisplayName("게시물 조회")
     public void getPosts() throws Exception {
         // given
@@ -164,25 +172,38 @@ class PostControllerTest {
         listRequestForm.add("startDate", "20240613");
         listRequestForm.add("endDate", "20240613");
 
-        PostCreateRequestDto requestDto = new PostCreateRequestDto("게시물 작성");
-        Post post = new Post(requestDto);
-
-        User user = new User(
-                "wkdgus1111",
-                "Wkdgus1004ok!",
-                "주장현",
-                "주장현닉네임",
-                "yugi@naver.com",
-                "한줄 소개", UserStatus.ACTIVE);
-
         Page<PostResponseDto> posts = new PageImpl<>(Collections.singletonList(new PostResponseDto(post, user)));
+        given(postService.getPosts(eq(0), eq("createdAt"), any(LocalDateTime.class), any(LocalDateTime.class)))
+                .willReturn(posts);
+
+        // when - then
+        mvc.perform(get("/api/posts/getList")
+                        .params(listRequestForm)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("게시물 조회가 완료 되었습니다."));
+    }
+
+    @Test
+    @DisplayName("빈 게시물 조회")
+    public void getEmptyPosts() throws Exception {
+        // given
+        this.mockUserSetup();
+        MultiValueMap<String, String> listRequestForm = new LinkedMultiValueMap<>();
+        listRequestForm.add("page", "0");
+        listRequestForm.add("sortBy", "createdAt");
+        listRequestForm.add("startDate", "20240613");
+        listRequestForm.add("endDate", "20240613");
+
+        Page<PostResponseDto> posts = new PageImpl<>(Collections.emptyList());
         given(postService.getPosts(eq(0), eq("createdAt"), any(LocalDateTime.class), any(LocalDateTime.class))).willReturn(posts);
 
         // when - then
-        mockMvc.perform(get("/api/posts/getList")
-//                        .params(listRequestForm)
+        mvc.perform(get("/api/posts/getList")
+                        .params(listRequestForm)
                         .contentType(MediaType.APPLICATION_JSON))
-//                        .principal(mockPrincipal))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("먼저 작성하여 소식을 알려보세요!"))
+                .andDo(print());
     }
 }

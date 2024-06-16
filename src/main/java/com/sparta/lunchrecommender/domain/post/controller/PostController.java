@@ -6,6 +6,7 @@ import com.sparta.lunchrecommender.domain.post.dto.PostResponseDto;
 import com.sparta.lunchrecommender.domain.post.dto.PostUpdateRequestDto;
 import com.sparta.lunchrecommender.global.security.UserDetailsImpl;
 import com.sparta.lunchrecommender.domain.post.service.PostService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -86,7 +87,7 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<HttpResponseDto> createPost(@RequestBody PostCreateRequestDto requestDto,
+    public ResponseEntity<HttpResponseDto> createPost(@Valid @RequestBody PostCreateRequestDto requestDto,
                                                       @AuthenticationPrincipal UserDetailsImpl userDetails) {
         postService.createPost(requestDto, userDetails.getUser());
         return ResponseEntity.status(HttpStatus.OK).body(

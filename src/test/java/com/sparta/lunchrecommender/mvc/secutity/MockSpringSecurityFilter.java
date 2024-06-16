@@ -1,4 +1,4 @@
-package com.sparta.lunchrecommender.mvc.controller;
+package com.sparta.lunchrecommender.mvc.secutity;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
