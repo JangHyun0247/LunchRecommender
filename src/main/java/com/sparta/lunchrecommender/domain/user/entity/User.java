@@ -41,6 +41,10 @@ public class User extends Timestamped {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime statusModifiedAt;
 
+    public User(Long id) {
+        this.userId = id;
+    }
+
 //    @OneToMany(mappedBy = "User")
 //    private List<Post> posts = new ArrayList<>();
 
