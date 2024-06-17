@@ -166,15 +166,27 @@ class PostServiceTest {
         User user = new User(1L);
         Post post = new Post(new PostCreateRequestDto("게시물 작성"));
         post.setUser(user);
+        post.setPostId(postId);
 
-        when(postRepository.findById(postId)).thenReturn(Optional.of(post));
+        // 게시물 저장 시 동작 정의
+        given(postRepository.save(any(Post.class))).willReturn(post);
+        // 게시물 조회 시 동작 정의
+        when(postRepository.findById(postId)).thenReturn(Optional.of(post))
+                .thenReturn(Optional.empty());
 
         // when
+        // 게시물 생성
+        postService.createPost(new PostCreateRequestDto("게시물 작성"), user);
+        // 게시물 삭제
         postService.deletePost(postId, user);
 
         // then
+        // delete 메서드가 한 번 호출되었는지 검증
         verify(postRepository, times(1)).delete(post);
+        // 삭제 후 게시물이 존재하지 않는지 검증
+        assertTrue(postRepository.findById(post.getPostId()).isEmpty());
     }
+
 
     @Test
     @DisplayName("게시물 삭제 테스트 - 실패 (사용자가 작성자가 아님)")
