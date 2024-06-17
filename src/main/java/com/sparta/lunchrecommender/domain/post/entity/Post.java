@@ -38,6 +38,10 @@ public class Post extends Timestamped {
         this.likeCount = 0L;
     }
 
+    public Post(Long postId){
+        this.postId = postId;
+    }
+
     public void update(PostUpdateRequestDto requestDto) {
         this.content = requestDto.getContent();
     }

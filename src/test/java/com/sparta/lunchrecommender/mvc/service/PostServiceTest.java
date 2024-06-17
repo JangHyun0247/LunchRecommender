@@ -8,26 +8,22 @@ import com.sparta.lunchrecommender.domain.post.repository.PostRepository;
 import com.sparta.lunchrecommender.domain.post.service.PostService;
 import com.sparta.lunchrecommender.domain.user.constant.UserStatus;
 import com.sparta.lunchrecommender.domain.user.entity.User;
-import com.sparta.lunchrecommender.domain.user.repository.UserRepository;
-import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.*;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
@@ -168,9 +164,9 @@ class PostServiceTest {
         post.setUser(user);
         post.setPostId(postId);
 
-        // 게시물 저장 시 동작 정의
+        // 게시물 저장 시
         given(postRepository.save(any(Post.class))).willReturn(post);
-        // 게시물 조회 시 동작 정의
+        // 게시물 조회 시
         when(postRepository.findById(postId)).thenReturn(Optional.of(post))
                 .thenReturn(Optional.empty());
 

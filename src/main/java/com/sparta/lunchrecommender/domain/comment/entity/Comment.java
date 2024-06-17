@@ -45,6 +45,14 @@ public class Comment extends Timestamped {
         this.likeCount = 0L;
     }
 
+    public Comment(Long commentId,CommentRequestDto commentRequestDto, Post post, User user) {
+        this.commentId = commentId;
+        this.content = commentRequestDto.getContent();
+        this.post = post;
+        this.user = user;
+        this.likeCount = 0L;
+    }
+
     public void update(CommentRequestDto commentRequestDto) {
         this.content = commentRequestDto.getContent();
     }

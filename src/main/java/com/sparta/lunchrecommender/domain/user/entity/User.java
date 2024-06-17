@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table
 @Getter
+@Setter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class User extends Timestamped {
