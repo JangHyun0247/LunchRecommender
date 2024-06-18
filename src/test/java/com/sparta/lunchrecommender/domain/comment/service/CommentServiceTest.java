@@ -1,10 +1,9 @@
-package com.sparta.lunchrecommender.mvc.service;
+package com.sparta.lunchrecommender.domain.comment.service;
 
 import com.sparta.lunchrecommender.domain.comment.dto.CommentRequestDto;
 import com.sparta.lunchrecommender.domain.comment.dto.CommentResponseDto;
 import com.sparta.lunchrecommender.domain.comment.entity.Comment;
 import com.sparta.lunchrecommender.domain.comment.repository.CommentRepository;
-import com.sparta.lunchrecommender.domain.comment.service.CommentService;
 import com.sparta.lunchrecommender.domain.post.entity.Post;
 import com.sparta.lunchrecommender.domain.post.repository.PostRepository;
 import com.sparta.lunchrecommender.domain.user.entity.User;

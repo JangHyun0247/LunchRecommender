@@ -1,7 +1,5 @@
-package com.sparta.lunchrecommender.dto;
+package com.sparta.lunchrecommender.domain.post.dto;
 
-import com.sparta.lunchrecommender.domain.post.dto.PostCreateRequestDto;
-import com.sparta.lunchrecommender.domain.post.dto.PostUpdateRequestDto;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;

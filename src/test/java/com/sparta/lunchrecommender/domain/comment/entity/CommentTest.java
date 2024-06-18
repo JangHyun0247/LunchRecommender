@@ -1,7 +1,6 @@
-package com.sparta.lunchrecommender.entity;
+package com.sparta.lunchrecommender.domain.comment.entity;
 
 import com.sparta.lunchrecommender.domain.comment.dto.CommentRequestDto;
-import com.sparta.lunchrecommender.domain.comment.entity.Comment;
 import com.sparta.lunchrecommender.domain.post.dto.PostCreateRequestDto;
 import com.sparta.lunchrecommender.domain.post.entity.Post;
 import com.sparta.lunchrecommender.domain.user.constant.UserStatus;

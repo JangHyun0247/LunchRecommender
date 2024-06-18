@@ -1,8 +1,6 @@
-package com.sparta.lunchrecommender.mvc.controller;
+package com.sparta.lunchrecommender.domain.comment.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.lunchrecommender.domain.comment.controller.CommentController;
 import com.sparta.lunchrecommender.domain.comment.dto.CommentRequestDto;
 import com.sparta.lunchrecommender.domain.comment.dto.CommentResponseDto;
 import com.sparta.lunchrecommender.domain.comment.entity.Comment;
@@ -13,7 +11,7 @@ import com.sparta.lunchrecommender.domain.user.constant.UserStatus;
 import com.sparta.lunchrecommender.domain.user.entity.User;
 import com.sparta.lunchrecommender.global.config.WebSecurityConfig;
 import com.sparta.lunchrecommender.global.security.UserDetailsImpl;
-import com.sparta.lunchrecommender.mvc.secutity.MockSpringSecurityFilter;
+import com.sparta.lunchrecommender.global.security.MockSpringSecurityFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

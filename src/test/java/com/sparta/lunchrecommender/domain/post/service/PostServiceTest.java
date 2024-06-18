@@ -1,11 +1,10 @@
-package com.sparta.lunchrecommender.mvc.service;
+package com.sparta.lunchrecommender.domain.post.service;
 
 import com.sparta.lunchrecommender.domain.post.dto.PostCreateRequestDto;
 import com.sparta.lunchrecommender.domain.post.dto.PostResponseDto;
 import com.sparta.lunchrecommender.domain.post.dto.PostUpdateRequestDto;
 import com.sparta.lunchrecommender.domain.post.entity.Post;
 import com.sparta.lunchrecommender.domain.post.repository.PostRepository;
-import com.sparta.lunchrecommender.domain.post.service.PostService;
 import com.sparta.lunchrecommender.domain.user.constant.UserStatus;
 import com.sparta.lunchrecommender.domain.user.entity.User;
 import org.junit.jupiter.api.BeforeEach;

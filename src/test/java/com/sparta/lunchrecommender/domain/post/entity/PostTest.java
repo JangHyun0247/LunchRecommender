@@ -1,8 +1,7 @@
-package com.sparta.lunchrecommender.entity;
+package com.sparta.lunchrecommender.domain.post.entity;
 
 import com.sparta.lunchrecommender.domain.post.dto.PostCreateRequestDto;
 import com.sparta.lunchrecommender.domain.post.dto.PostUpdateRequestDto;
-import com.sparta.lunchrecommender.domain.post.entity.Post;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

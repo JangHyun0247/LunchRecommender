@@ -1,8 +1,7 @@
-package com.sparta.lunchrecommender.entity;
+package com.sparta.lunchrecommender.domain.user.entity;
 
 import com.sparta.lunchrecommender.domain.user.constant.UserStatus;
 import com.sparta.lunchrecommender.domain.user.dto.ProfileRequestDto;
-import com.sparta.lunchrecommender.domain.user.entity.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
